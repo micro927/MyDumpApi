@@ -4,7 +4,7 @@ var cors = require('cors');
 var app = express()
 var port = 3099
 
-// app.use(cors('*'))
+app.use(cors('*'))
 
 app.get('/', (req, res) => {
     // console.log(req);
@@ -14,10 +14,9 @@ app.get('/', (req, res) => {
 app.get('/football/leagues', (req, res) => {
     const leagues = JSON.parse(require("fs").readFileSync("./football/Leagues.json", "utf8"))
     if (req) {
-        console.log('aaa');
+        console.log('request football leagues');
     }
     res.json(leagues)
-    // res.send('Hello World!')
 })
 
 app.listen(port, () => {
